@@ -1,0 +1,37 @@
+<body onload="fillUp(names)">
+
+<table id="bingo">
+</table>
+
+<button onclick="klikkerino()">Sut Mig</button>
+</body>
+
+<script>
+
+var names = [{name:"Lars",phone:"1234567"}, {name: "Peter",phone: "675843"}, {name: "Jan", phone: "98547"},{name: "Bo", phone: "79345"}];
+var tableHead = "<tr><th>Name</th><th>Phone</th></tr>";
+
+
+function fillUp(arr){
+    var tableBody = arr.map(function(e){
+    return "<tr>" + "<td>" + e.name + "</td>" +
+            "<td>" + e.phone + "</td>" + "</tr>" ;
+    });
+
+let finalStr = "<tr>" + tableBody.join("") + "</tr>";
+
+let bingo = document.getElementById("bingo");
+bingo.innerHTML = tableHead + finalStr;
+};
+
+
+
+function klikkerino(){
+    var newArr = names.filter(function(e){
+        if (e.name.length <= 3){
+        return e;
+    }
+    });
+    fillUp(newArr);
+}
+</script>
